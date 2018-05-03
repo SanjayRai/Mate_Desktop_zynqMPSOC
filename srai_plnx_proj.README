@@ -1,0 +1,80 @@
+Based on Vivado and PetaLinux 2018.1
+
+1. Create a ZynQ MPSOC Block diagram in Vivado IPI and configure it for the board.
+2. Generate the Bitfile and Export Hardware (along with the bitfile). This create a HDF file (location = HDK_Export)
+
+
+Create a generic petaLinux project structure.
+    > petalinux-create -t project -n petalinux_Project_name --template zynqMP
+
+
+Point to the directory where the .hdf file is located. THis file would have been exported by Vivado (IPI Design)
+    > cd petalinux_Project_name
+    > petalinux-config --get-hw-description=../../HDK_export
+        Configure CONFIG_SUBSYSTEM_MACHINE_NAME per UG1144 (v2018.1) Page 22
+        ie, DTG Settings ---> <template>
+         <template> being on of kc705_lite, zc1751-dc1, zc706, ...... zc104-revc, zcu106-reva, zcu102-rev1.0 
+         (Choose zcu102-rev1.0 for latest ZCU102 with Prod. Si)
+
+         Configure rootfs to be in the SD partiton 
+            Image Packaging Configuration -> Root filesystem type ---> SD card (default would be INITRAMFS)
+
+> petalinux-build
+
+> petalinux-package --boot --format BIN --fsbl ./images/linux/zynqmp_fsbl.elf  --fpga ./images/linux/system.bit  --u-boot
+
+Copy the BOOT.BIN and Image.ub  files to the SD Card.
+
+mkdir Arch_linux
+Arch_linux
+wget os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz
+
+create an SD card with 2 partions:
+Partion 1 or Boot Partition should be FAT32 (about 1GB)
+Partiton 2 can be ext3 or ext4 (rest of the SD Card atleast 1GB)
+
+use gparted (or fdsik)
+
+copy BOOT.BIN and image.ub to Partition 1 (Boot partition) 
+extract the ArchLinuxARM-aarch64-latest.tar.gz to partiton 2 (ext3/4 partition)
+ (mount the second partiton and use cp  or use dd to /dev/<disk_partition> )
+
+ log in as  root (passwd root)
+ > useradd --create-home <user_name>
+ > passwd <use_name>
+
+ pacman  repository config file: (If this needs editing most likely not)
+ /etc/pacman.conf
+ /etc/pacman.d/mirrorlist
+ Specifically use the ca.us.mirror.archlinuxarm.org site. MIght need to refresh pacman (pacman -Syyu a couple of times for it to pick up the latest versions in case of Pagake error  404 )
+
+ Update and upgarde repository
+    >pacman -Syyu 
+    >pacman -Syu python 
+    >pacman -Syu xorg
+    >pacman -Syu xorg-server
+    >pacman -Syu mate 
+    >pacman -Syu mate-extra
+    >pacman -Syu lxdm 
+    >pacman -Syu gvim 
+    >pacman -Syu tigervnc
+    >pacman -Syu base-devel
+    >pacman -Syu chromium  
+    >pacman -Syu libreoffice  
+    >pacman -S ttf-dejavu ttf-liberation noto-fonts
+    >ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf  /etc/fonts/conf.d
+    >ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf  /etc/fonts/conf.d
+    >ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf  /etc/fonts/conf.d
+    Alppearance : Fonts (tab) -> Fixed width font -> select "Monospace regular 11" .
+    Mate Desktop -> System -> Preferances -> Look and Feel -> 
+
+ > vncserver :1
+ > vncserver -kill :1
+ modify the .vnc/xstartup to include /usr/bin/mate-session lxdm (inplace of twm)
+
+backup and cloning  from _x86_host Linux  Desktop
+Insert SdCard into a host Linux server, (assuming /dev/sdg)
+dd if=/dev/sdg of=./<BackUpfile_name>.ext4
+
+if the new SdCard is larger, use gparted to resixe/move the Partiton to claim the entire larger SdCard space.
+
