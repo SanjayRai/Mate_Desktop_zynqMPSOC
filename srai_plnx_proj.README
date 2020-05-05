@@ -48,7 +48,7 @@ extract the ArchLinuxARM-aarch64-latest.tar.gz to partiton 2 (ext3/4 partition)
  /etc/pacman.d/mirrorlist
  Specifically use the ca.us.mirror.archlinuxarm.org site. MIght need to refresh pacman (pacman -Syyu a couple of times for it to pick up the latest versions in case of Pagake error  404 )
 
- Update and upgarde repository
+ Update and upgarde repository (pacman --noconfirm -Syu <package>  to skip confirming)
     >pacman -Syyu 
     >pacman -Syu python 
     >pacman -Syu xorg
