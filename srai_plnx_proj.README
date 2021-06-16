@@ -13,7 +13,7 @@ Point to the directory where the .hdf file is located. THis file would have been
     > petalinux-config --get-hw-description=../../HDK_export
         Configure CONFIG_SUBSYSTEM_MACHINE_NAME per UG1144 (v2018.1) Page 22
         ie, DTG Settings ---> <template>
-         <template> being on of kc705_lite, zc1751-dc1, zc706, ...... zc104-revc, zcu106-reva, zcu102-rev1.0 
+         <template> being on of kc705_lite, zc1751-dc1, zc706, ...... zcu104-revc, zcu106-reva, zcu102-rev1.0 
          (Choose zcu102-rev1.0 for latest ZCU102 with Prod. Si)
 
          Configure rootfs to be in the SD partiton 
