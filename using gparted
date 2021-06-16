@@ -1,0 +1,13 @@
+Start gparted with  gparted command from the Command shell which  open the gparted GUI
+select /dev/sdc (or the  device  specific the to inserted SD Card)
+Delete all partitions. THe only Partitions showing should be the unallocated with the entire size of the SD Card (14.84 for a 16GB Card)
+Right click on the Unallocated and Add a Primary Partition - Specify (New Size) - 1024 MB : File System = fat32: Label - "Bootable_p" -> Click add
+Right click on the unallocated  and add  anoth partition, size = 14169 MB (ie, rest of the Card) : File System = ext4 : Label = "Rootfs_p" - Click add
+Gparted will now show 2 New partitions Fat32 (Bootable_p) 1GB and  ext4 (Rootfs_p) 13.84 GB.
+Click on the Green Check make (Apply all operations).  Gparted returns with a Blue bar "All Operations sucessfully completed"
+quit gparted
+
+login as su or (sudo)
+fdisk -l
+you should now see /dev/sdc1 FAT32 ) of 1048576 or 1M (Blocks) and /dev/sc2 14508032 or 13.8359375M (Blocks)
+We can now mount these devices  and follow srai_plnx_proj.README instructions on  loading  ArchLinux
