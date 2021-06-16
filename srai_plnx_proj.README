@@ -36,9 +36,16 @@ Partiton 2 can be ext3 or ext4 (rest of the SD Card atleast 1GB)
 use gparted (or fdsik)
 
 copy BOOT.BIN and image.ub to Partition 1 (Boot partition) 
+    > mount /dev/sdc1 /mnt/USB
+    > cp BOOT.bin /mnt/USB
+    > cp image.ub /mnt/USB
+    > umount /mnt/USB
 extract the ArchLinuxARM-aarch64-latest.tar.gz to partiton 2 (ext3/4 partition)
  (mount the second partiton and use cp  or use dd to /dev/<disk_partition> )
-
+ Eg:
+    > mount /dev/sdc2 /mnt/USB2
+    > tar -zxvf ArchLinuxARM-aarch64-latest.tar.gz --directory /mnt/USB2/
+    > ls -ali /mnt/USB2  (We will see the Linux Directory Structure and FileSystem)
  log in as  root (passwd root)
  > useradd --create-home <user_name>
  > passwd <use_name>
