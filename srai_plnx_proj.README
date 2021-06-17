@@ -15,6 +15,10 @@ Point to the directory where the .hdf file is located. THis file would have been
         ie, DTG Settings ---> <template>
          <template> being on of kc705_lite, zc1751-dc1, zc706, ...... zcu104-revc, zcu106-reva, zcu102-rev1.0 
          (Choose zcu102-rev1.0 for latest ZCU102 with Prod. Si)
+          /* This includes the XIlinx created dtsi file in the device-tree directory. For Example selecting zcu104-revc  creates a file called 
+          plnx_workspace/device-tree/device-tree/zcu104-revc.dtsi which will have all the MIO mapping , registers, IO specific delay and  properties for ZCU104 board */
+          
+          /* For any use  specific  settings use system-user.dtsi in the petalinux-proj/project-spec/meta-user/recepies-bsp/device-tree/files directory */
 
          Configure rootfs to be in the SD partiton 
             Image Packaging Configuration -> Root filesystem type ---> SD card (default would be INITRAMFS)
