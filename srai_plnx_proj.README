@@ -69,6 +69,7 @@ Login as root (root)
     >pacman -Syu xorg
     >pacman -Syu xorg-server
     >pacman -Syu mate 
+    >pacman -Syu mate-desktop
     >pacman -Syu mate-extra
     >pacman -Syu lxdm 
     >pacman -Syu gvim 
