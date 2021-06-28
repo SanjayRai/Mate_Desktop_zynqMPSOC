@@ -94,3 +94,26 @@ dd if=/dev/sdg of=./<BackUpfile_name>.ext4
 
 if the new SdCard is larger, use gparted to resixe/move the Partiton to claim the entire larger SdCard space.
 
+MISC NOTES :
+X11 forwarding for sudo users
+Just setting the DISPLAY is not enough. X authentication is based on cookies, so it’s necessary to set the cookie used by the user that initiated the connection. The following procedure allows a sudo user to use the ssh based X11 tunnel:
+
+1. Connect the remote host using the -X option with ssh.
+
+# ssh -X root@remote-host
+2. Now list the coockie set for the current user.
+
+# xauth list $DISPLAY
+node01.thegeekdiary.com/unix:10  MIT-MAGIC-COOKIE-1  dacbc5765ec54a1d7115a172147866aa
+# echo $DSIPLAY
+localhost:10.0
+3. Switch to another user account using sudo. Add the cookie from the command output above to the sudo user.
+
+# sudo su - [user]
+# xauth add node01.thegeekdiary.com/unix:10  MIT-MAGIC-COOKIE-1  dacbc5765ec54a1d7115a172147866aa
+4. Export the display from step 2 again for the sudo user. Try the command xclock to verify if the x client applications are working as expected.
+
+# export DISPLAY=localhost:10.0
+# xclock
+
+
