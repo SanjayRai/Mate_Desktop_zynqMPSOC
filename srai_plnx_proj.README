@@ -116,4 +116,14 @@ localhost:10.0
 # export DISPLAY=localhost:10.0
 # xclock
 
+ArchLunix / Manjaro Llinux X11 Forwarding
+1.  Install xorg-xauth and xorg-xhost
+        > pacman -Syyu xorg-xauth
+        > pacman -Syyu xorg-xhost
+        
+2. Edit  /etc/ssh/sshd_config file
+   X11Forwarding yes
+    AllowTcpForwarding yes
+    X11UseLocalhost yes
+    X11DisplayOffset 10
 
