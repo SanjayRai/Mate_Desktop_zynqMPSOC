@@ -70,6 +70,8 @@ Login as root (root)
     >pacman -Syu python 
     >pacman -Syu xorg
     >pacman -Syu xorg-server
+    > pacman -Syyu xorg-xauth
+    > pacman -Syyu xorg-xhost
     >pacman -Syu mate 
     >pacman -Syu mate-desktop
     >pacman -Syu mate-extra
@@ -120,11 +122,10 @@ localhost:10.0
 
 ArchLunix / Manjaro Llinux X11 Forwarding
 1.  Install xorg-xauth and xorg-xhost
-        > pacman -Syyu xorg-xauth
-        > pacman -Syyu xorg-xhost
+
         
-2. Edit  /etc/ssh/sshd_config file
-   X11Forwarding yes
+21Edit  /etc/ssh/sshd_config file
+    X11Forwarding yes
     AllowTcpForwarding yes
     X11UseLocalhost yes
     X11DisplayOffset 10
