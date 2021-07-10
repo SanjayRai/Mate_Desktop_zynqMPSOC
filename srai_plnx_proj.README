@@ -50,6 +50,7 @@ extract the ArchLinuxARM-aarch64-latest.tar.gz to partiton 2 (ext3/4 partition)
  Eg:
     > mount /dev/sdc2 /mnt/USB2
     > tar -zxvf ArchLinuxARM-aarch64-latest.tar.gz --directory /mnt/USB2/
+    > sync   (Always use the sync command after writing to mounted SD / USB media ;  rootfs most likely will be corrupted without this: sync command might take a while (10 minsor so to return)
     > ls -ali /mnt/USB2  (We will see the Linux Directory Structure and FileSystem)
  log in as  root (passwd root)
  > useradd --create-home <user_name>
