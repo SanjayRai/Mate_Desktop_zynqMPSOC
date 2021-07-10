@@ -81,6 +81,7 @@ Login as root (root)
     >pacman -Syu base-devel
     >pacman -Syu chromium  
     >pacman -Syu libreoffice  
+    >pacman -Syyu gparted
     >pacman -S ttf-dejavu ttf-liberation noto-fonts
     >ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf  /etc/fonts/conf.d
     >ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf  /etc/fonts/conf.d
@@ -88,9 +89,23 @@ Login as root (root)
     Alppearance : Fonts (tab) -> Fixed width font -> select "Monospace regular 11" .
     Mate Desktop -> System -> Preferances -> Look and Feel -> 
 
- > vncserver :1
- > vncserver -kill :1
- modify the .vnc/xstartup to include /usr/bin/mate-session lxdm (inplace of twm)
+VNCSERVER :
+Create a password using vncpasswd which will store the hashed password in ~/.vnc/passwd.
+Edit /etc/tigervnc/vncserver.users to define user mappings. Each user defined in this file will have a corresponding port on which its session will run. The number in the file corresponds to a TCP port. By default, :1 is TCP port 5901 (5900+1). If another parallel server is needed, a second instance can then run on the next highest, free port, i.e 5902 (5900+2).
+Create ~/.vnc/config and at a minimum, define the type of session desired with a line like session=foo where foo corresponds to which ever DE is to run. One can see which DEs are available on the system by seeing their corresponding .desktop files within /usr/share/xsessions/.
+For example:
+
+~/.vnc/config
+session=lxqt
+geometry=1920x1080
+alwaysshared
+
+Starting and stopping tigervnc:
+Start vncserver@.service and optionally enable it to run at boot time/shutdown. Note that the display number needs to be specified following the literal @ sign. For :1 it would look like this:
+
+# systemctl start vncserver@:1
+Note: Direct calls to /usr/bin/vncserver are not supported as they will not establish a proper session scope. The systemd service is the only supported method of using TigerVNC. See: Issue #1096.
+
 
 backup and cloning  from _x86_host Linux  Desktop
 Insert SdCard into a host Linux server, (assuming /dev/sdg)
