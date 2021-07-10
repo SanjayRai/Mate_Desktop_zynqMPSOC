@@ -55,6 +55,7 @@ extract the ArchLinuxARM-aarch64-latest.tar.gz to partiton 2 (ext3/4 partition)
  log in as  root (passwd root)
  > useradd --create-home <user_name>
  > passwd <use_name>
+ > usermod -aG root sanjayr (Gives Administrative privilages to user sanjayr)
 
  pacman  repository config file: (If this needs editing most likely not)
  /etc/pacman.conf
