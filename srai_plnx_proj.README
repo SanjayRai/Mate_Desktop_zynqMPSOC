@@ -27,7 +27,14 @@ Point to the directory where the .hdf file is located. THis file would have been
 
 > petalinux-package --boot --format BIN --fsbl ./images/linux/zynqmp_fsbl.elf  --fpga ./images/linux/system.bit  --u-boot
 
-Copy the BOOT.BIN and Image.ub  files to the SD Card.
+Side Note:  The final  device Tree will be called system.dtb (Device Tree Blob). To view this  you can use the tool calle d dtc (Device Tree Compiler)
+>>  <full_path_to_peta_linux_install>/components/yocto/buildtools/sysroots/x86_64-petalinux-linux/usr/bin/dtc --in-format dtb --out-format dts -o srai.dts system.dtb
+
+The following salient files that are produced :
+BOOT.BIN (has  ATF, pmu firmware, uboot,  and PL Bitfile(system.bit) )
+image.ub (Linux Kernel image  and Device tree Blob)
+
+Copy the BOOT.BIN and Image.ub  and boot.scr  files to the SD Card.
 
 mkdir Arch_linux
 Arch_linux
