@@ -96,7 +96,7 @@ Create ~/.vnc/config and at a minimum, define the type of session desired with a
 For example:
 
 ~/.vnc/config
-session=lxqt
+session=lxdm
 geometry=1920x1080
 alwaysshared
 
