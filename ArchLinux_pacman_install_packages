@@ -13,8 +13,17 @@ pacman -Syu gvim --noconfirm
 pacman -Syu tigervnc --noconfirm
 pacman -Syu base-devel --noconfirm
 pacman -Syu chromium  --noconfirm
+pacman -Syu vlc  --noconfirm
+pacman -Syu mplayer --noconfirm
 pacman -Syu libreoffice  --noconfirm
 pacman -Syyu gparted --noconfirm
+pacman -Syyu gstreamer --noconfirm
+pacman -Syyu gst-libav --noconfirm
+pacman -Syyu gst-plugins-bad  --noconfirm
+pacman -Syyu gst-plugins-base  --noconfirm
+pacman -Syyu gst-plugins-good --noconfirm
+pacman -Syyu gst-plugins-ugly  --noconfirm
+
 pacman -S ttf-dejavu ttf-liberation noto-fonts --noconfirm
 ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf  /etc/fonts/conf.d
 ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf  /etc/fonts/conf.d
