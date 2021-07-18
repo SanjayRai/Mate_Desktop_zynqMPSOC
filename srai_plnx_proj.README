@@ -95,6 +95,16 @@ Login as root (root)
     >ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf  /etc/fonts/conf.d
     Alppearance : Fonts (tab) -> Fixed width font -> select "Monospace regular 11" .
     Mate Desktop -> System -> Preferances -> Look and Feel -> 
+    
+    Adding USB WebCam:
+     -- lsusb -vv -s <BDF for USB> to see camera
+     -- dmesg also shows USB Camera
+     -- USB Camera is generallu /dev/video0 , /dev/video1 etc.
+     -- Add  user (sanjayr) to video group
+     -- sudo usermod -a -G video sanjayr (Reboot of ther this)
+        -- login as sanjayr , the groups command should noew show video as  one of the groups.
+        -- mplayer tv://device=/dev/video  will show  the USB Video
+        -- Also vlc v4l2:///dev/vido0
 
 VNCSERVER :
 Create a password using vncpasswd which will store the hashed password in ~/.vnc/passwd.
