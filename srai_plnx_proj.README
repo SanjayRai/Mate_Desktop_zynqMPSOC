@@ -98,8 +98,12 @@ Login as root (root)
 
 VNCSERVER :
 Create a password using vncpasswd which will store the hashed password in ~/.vnc/passwd.
-Edit /etc/tigervnc/vncserver.users to define user mappings. Each user defined in this file will have a corresponding port on which its session will run. The number in the file corresponds to a TCP port. By default, :1 is TCP port 5901 (5900+1). If another parallel server is needed, a second instance can then run on the next highest, free port, i.e 5902 (5900+2).
-Create ~/.vnc/config and at a minimum, define the type of session desired with a line like session=foo where foo corresponds to which ever DE is to run. One can see which DEs are available on the system by seeing their corresponding .desktop files within /usr/share/xsessions/.
+ - Edit /etc/tigervnc/vncserver.users to define user mappings. 
+    -- Each user defined in this file will have a corresponding port on which its session will run. 
+    -- The number in the file corresponds to a TCP port. By default, :1 is TCP port 5901 (5900+1). 
+    -- If another parallel server is needed, a second instance can then run on the next highest, free port, i.e 5902 (5900+2).
+ - Create ~/.vnc/config and at a minimum, define the type of session desired with a line like session=foo where foo corresponds to which ever DE is to run. 
+   -- One can see which DEs are available on the system by seeing their corresponding .desktop files within /usr/share/xsessions/.
 For example:
 
 ~/.vnc/config
