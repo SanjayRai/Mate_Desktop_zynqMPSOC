@@ -14,7 +14,7 @@ pacman -Syu base-deve --noconfirml
 pacman -Syu chromium  --noconfirm
 pacman -Syu libreoffice  --noconfirm
 pacman -Syyu gparted --noconfirm
-pacman -S ttf-dejavu ttf-liberation noto-fonts
+pacman -S ttf-dejavu ttf-liberation noto-fonts --noconfirm
 ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf  /etc/fonts/conf.d
 ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf  /etc/fonts/conf.d
 ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf  /etc/fonts/conf.d
