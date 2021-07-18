@@ -1,0 +1,20 @@
+pacman -Syyu --noconfirm
+pacman -Syu python --noconfirm
+pacman -Syu xor --noconfirmg
+pacman -Syu xorg-serve --noconfirmr
+pacman -Syyu xorg-xaut --noconfirmh
+pacman -Syyu xorg-xhos --noconfirmt
+pacman -Syu mate --noconfirm
+pacman -Syu mate-deskto --noconfirmp
+pacman -Syu mate-extr --noconfirma
+pacman -Syu lxdm --noconfirm
+pacman -Syu gvim --noconfirm
+pacman -Syu tigervn --noconfirmc
+pacman -Syu base-deve --noconfirml
+pacman -Syu chromium  --noconfirm
+pacman -Syu libreoffice  --noconfirm
+pacman -Syyu gparted --noconfirm
+pacman -S ttf-dejavu ttf-liberation noto-fonts
+ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf  /etc/fonts/conf.d
+ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf  /etc/fonts/conf.d
+ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf  /etc/fonts/conf.d
