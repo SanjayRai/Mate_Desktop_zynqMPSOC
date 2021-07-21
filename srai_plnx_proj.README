@@ -32,6 +32,13 @@ Side Note:  The final  device Tree will be called system.dtb (Device Tree Blob).
 
 The following salient files that are produced :
 BOOT.BIN (has  ATF, pmu firmware, uboot,  and PL Bitfile(system.bit) )
+
+
+TO Use XIlinx EzMove SFTP service :
+    Create a config file in ~sanjayr/.ssh directory and add the following :
+
+Host ezmove.xilinx.com
+    HostKeyAlgorithms +ssh-dss
 image.ub (Linux Kernel image  and Device tree Blob)
 
 Copy the BOOT.BIN and Image.ub  and boot.scr  files to the SD Card.
