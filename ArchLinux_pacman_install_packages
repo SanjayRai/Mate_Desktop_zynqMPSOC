@@ -1,6 +1,9 @@
+pacman-key --init
+pacman-key --populate archlinuxarm
 pacman -Syyu --noconfirm
-pacman -Syu sudo --noconfirm
 pacman -Syu python --noconfirm
+pacman -Syyu git --noconfirm
+pacman -Syyu make --noconfirm
 pacman -Syu xorg --noconfirm
 pacman -Syu xorg-server --noconfirm
 pacman -Syyu xorg-xauth --noconfirm
