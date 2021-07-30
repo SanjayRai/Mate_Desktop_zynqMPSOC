@@ -173,3 +173,18 @@ ArchLunix / Manjaro Llinux X11 Forwarding
     X11UseLocalhost yes
     X11DisplayOffset 10
 
+
+How to Get a WiFI USB Dongle to work on the ZU104 card:
+
+1. In stall wpa_supplicant and dhclient (pacman -S wpa_supplicant  & pacman -S dhclient)
+2. create a file  called  /etc/wpa_supplicant/wpa_supplicant.conf  with the following :
+ network={
+    ssid="do-not-use-me"
+    psk="s*******96"
+ }
+ 3. > iwconfig    //to list all the  Wireless Interfaces. look for wlan0 (If the WiFI  USB driver is  correctly included and build with the Linux Kernel the WiFI dongle will show up here)
+ 4. > sudo wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf
+ 5. ifconfig   // Shoul dnow show  wlan0
+ 6 > sudo dhclient wlan0   // THis will bring up wlan0 and  assign a DHCP  inet IP address 
+ 7. ifconfig   // wil now list the IP address.
+ 
