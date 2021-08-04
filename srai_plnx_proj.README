@@ -176,6 +176,11 @@ ArchLunix / Manjaro Llinux X11 Forwarding
 
 How to Get a WiFI USB Dongle to work on the ZU104 card:
 
+ A. Enable  Kernel drivers for the USB WiFi chipset (in this case RaLink - RA28xx
+    > petalinux-config -c kernel
+        Device Drivers ->  Network Device Support -> Wireless LAN -> RaLInk Driver Support -> {Select all ralink USB devices}
+        
+ B.  After the OS boots with ArchLinux install the following:
 1. In stall wpa_supplicant and dhclient (pacman -S wpa_supplicant  & pacman -S dhclient)
 2. create a file  called  /etc/wpa_supplicant/wpa_supplicant.conf  with the following :
  network={
