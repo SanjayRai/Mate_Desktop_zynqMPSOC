@@ -96,6 +96,7 @@ Login as root (root)
     >pacman -Syu chromium  
     >pacman -Syu libreoffice  
     >pacman -Syyu gparted
+      >pacman -Syyu usbutils
     >pacman -S ttf-dejavu ttf-liberation noto-fonts
     >ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf  /etc/fonts/conf.d
     >ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf  /etc/fonts/conf.d
@@ -106,15 +107,28 @@ Login as root (root)
     Adding USB WebCam:
      -- lsusb -vv -s <BDF for USB> to see camera
      -- dmesg also shows USB Camera
-     -- v4l2-ctl --list-devices 
+     -- v4l2-ctl --list-devices (THere appears to be a reliability issue  and might take a few attempts - need to troubleshoot)
         THis command will show the camera listed 
      -- USB Camera is generallu /dev/video0 , /dev/video1 etc.
      -- Add  user (sanjayr) to video group
      -- sudo usermod -aG video sanjayr (Reboot of ther this)
         -- login as sanjayr , the groups command should noew show video as  one of the groups.
-        -- mplayer tv://device=/dev/video  will show  the USB Video
-        -- Also vlc v4l2:///dev/vido0
-        
+        -- mplayer tv://device=/dev/video  will show  the USB Video  (THere appears to be a reliability issue  and might take a few attempts - need to troubleshoot)
+        -- Also vlc v4l2:///dev/vido0  (THere appears to be a reliability issue  and might take a few attempts - need to troubleshoot)
+     Basis Video Streaming via ffmpeg : 
+     >> ffmpeg -i /dev/video0 -s 1280x480 -reset ultrafast -pix_fmt yuv420p -f mpegts  -flush_packets 0 -r 25 -crf 25 udp://<IP_ADDRESS_OF_RECEIVING_COMPUTER>:5000?pkt_size=1316
+     
+     of the <Receving _Comoputer> open port 5000 (firewall-cmd --zone=public --permanent 5000/udp  ; frewall-cmd --reload  ; firewall-cmd --list-ports)
+      >  vlc  udp://@<IP_ADDRESS_OF_RECEIVING_COMPUTER>:5000
+      
+      Using  v4l2rtspserver  :
+       1. git clone https://github.com/mpromonet/v4l2rtspserver.git
+       2. cd v4l2rtspserver && cmake . && make && make install
+       3. v4l2rtspserver /dev/video0 &  (v4l2rtspserver --help for options ) default port is 8554
+       4. On any Client  with vlc or other :  
+         > vlc rtsp://<IP_Address_of_rtsp_server>:8554/unicast
+
+       
 
 VNCSERVER :
 Create a password using vncpasswd which will store the hashed password in ~/.vnc/passwd.
