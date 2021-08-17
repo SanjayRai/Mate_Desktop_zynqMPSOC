@@ -109,6 +109,10 @@ Login as root (root)
      -- dmesg also shows USB Camera
      -- v4l2-ctl --list-devices (THere appears to be a reliability issue  and might take a few attempts - need to troubleshoot)
         THis command will show the camera listed 
+     -- v4l2-ctl -d /dev/video0 --all (THis displays all controlable parameters and formats)
+     - >> v4l2-ctl -d /de/video0  --list-formats-ext (to list all supported resolutions)
+      - >> v4l2-ctl -d /de/video0  --set-fmt-video=width=1280,height=480,pixelformat=MJPG (sets  the format to 1280x480)
+       - >> v4l2-ctl -d /de/video0  --get-fmt-video (gfets  the current format to ensure the above commands worked)
      -- USB Camera is generallu /dev/video0 , /dev/video1 etc.
      -- Add  user (sanjayr) to video group
      -- sudo usermod -aG video sanjayr (Reboot of ther this)
@@ -125,6 +129,7 @@ Login as root (root)
        1. git clone https://github.com/mpromonet/v4l2rtspserver.git
        2. cd v4l2rtspserver && cmake . && make && make install
        3. v4l2rtspserver /dev/video0 &  (v4l2rtspserver --help for options ) default port is 8554
+                >> v4l2rtspserver  -W 1280 -H 480 /dev/video0  ( THis is for the  3D Streo Camera)
        4. On any Client  with vlc or other :  
          > vlc rtsp://<IP_Address_of_rtsp_server>:8554/unicast
 
