@@ -110,9 +110,13 @@ Login as root (root)
      -- v4l2-ctl --list-devices (THere appears to be a reliability issue  and might take a few attempts - need to troubleshoot)
         THis command will show the camera listed 
      -- v4l2-ctl -d /dev/video0 --all (THis displays all controlable parameters and formats)
-     - >> v4l2-ctl -d /de/video0  --list-formats-ext (to list all supported resolutions)
-      - >> v4l2-ctl -d /de/video0  --set-fmt-video=width=1280,height=480,pixelformat=MJPG (sets  the format to 1280x480)
-       - >> v4l2-ctl -d /de/video0  --get-fmt-video (gfets  the current format to ensure the above commands worked)
+     - >> v4l2-ctl -d /dev/video0  --list-formats-ext (to list all supported resolutions)
+      - >> v4l2-ctl -d /dev/video0  --set-fmt-video=width=1280,height=480,pixelformat=MJPG (sets  the format to 1280x480)
+       - >> v4l2-ctl -d /dev/video0  --get-fmt-video (gfets  the current format to ensure the above commands worked)
+       >>v4l2-ctl -d /dev/video0 --list-ctls (To list all  Controlable Camera Parametrets)
+       >> v4l2-ctl -d /dev/video0  --set-sharpness=93 (Example of setting sharpnes))
+       >> v4l2-ctl -d /dev/video0  --get-sharpness (Example of reading back a parameters))
+
      -- USB Camera is generallu /dev/video0 , /dev/video1 etc.
      -- Add  user (sanjayr) to video group
      -- sudo usermod -aG video sanjayr (Reboot of ther this)
