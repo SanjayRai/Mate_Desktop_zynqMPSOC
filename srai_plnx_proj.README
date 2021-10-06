@@ -208,7 +208,7 @@ How to Get a WiFI USB Dongle to work on the ZU104 card:
         
  B.  After the OS boots with ArchLinux install the following:
  0. Check all available ethernet links with :
- >> if link show
+ >> ip link show
 1. In stall wpa_supplicant and dhclient (pacman -S wpa_supplicant  & pacman -S dhclient)
 2. create a file  called  /etc/wpa_supplicant/wpa_supplicant.conf  with the following :
  network={
