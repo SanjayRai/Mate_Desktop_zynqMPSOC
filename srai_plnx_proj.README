@@ -106,6 +106,10 @@ Login as root (root)
     Alppearance : Fonts (tab) -> Fixed width font -> select "Monospace regular 11" .
     Mate Desktop -> System -> Preferances -> Look and Feel -> 
     
+    Troubleshooting drivers:
+    > zcat  /proc/config.gz
+    > zcat /proc/config.gz | grep PHY
+    
     Adding USB WebCam:
      -- lsusb -vv -s <BDF for USB> to see camera
      -- dmesg also shows USB Camera
