@@ -228,3 +228,16 @@ How to Get a WiFI USB Dongle to work on the ZU104 card:
  6 > sudo dhclient wlan0   // THis will bring up wlan0 and  assign a DHCP  inet IP address 
  7. ifconfig   // wil now list the IP address.
  
+
+
+Adding  Yahoo stock_analysis
+1. ensure python 3.10.xxx 9pyton --version)
+2. pacman -S python-pip
+3. pip install dropbox
+4. pip install yahooquery
+5. git clone git@github.com:SanjayRai/stock_analyzer.git
+6. python ./scripts/get_history_from_dropBox.py
+
+
+
+
