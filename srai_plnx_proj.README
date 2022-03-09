@@ -229,6 +229,26 @@ How to Get a WiFI USB Dongle to work on the ZU104 card:
  7. ifconfig   // wil now list the IP address.
  
 
+Disabling  random  Ethernet MAC Address:
+To stop  the MAC addres from  randomly changing every boot
+1. > sudo systemctl enable systemd-networkd.service
+2. > sudo systemctl start systemd-networkd.service
+3. > sudo  vim /etc/systemd/network/eth.network
+    Edit this file as follows
+    
+    [Match]
+    Name=eth0
+    
+    [Network]
+    DHCP=yes
+    DNSSEC=no
+    
+    [Link]
+    MACAddress=b6:43:d3:1c:9f:48
+    
+    
+  4. The Name=eth0 is based on  ifconfig  interface name. Mac address is either on the card or just madeup !
+  5.> sudo reboot
 
 Adding  Yahoo stock_analysis
 1. ensure python 3.10.xxx 9pyton --version)
