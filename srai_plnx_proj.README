@@ -91,6 +91,7 @@ Login as root (root)
     >pacman -Syu mate 
     >pacman -Syu mate-desktop
     >pacman -Syu mate-extra
+    >pacman -Syu mate-tweak
     >pacman -Syu lxdm 
     >pacman -Syu gvim 
     >pacman -Syu tigervnc
@@ -167,7 +168,7 @@ Start vncserver@.service and optionally enable it to run at boot time/shutdown. 
 # systemctl start vncserver@:1
 Note: Direct calls to /usr/bin/vncserver are not supported as they will not establish a proper session scope. The systemd service is the only supported method of using TigerVNC. See: Issue #1096.
 
-
+IF there is an unsightly "BLACK Border" around  windows,  open mate-tweak -> windows " Window manager  -> Select "MACRO(Np COmpositor)"
 backup and cloning  from _x86_host Linux  Desktop
 Insert SdCard into a host Linux server, (assuming /dev/sdg)
 dd if=/dev/sdg of=./<BackUpfile_name>.ext4
