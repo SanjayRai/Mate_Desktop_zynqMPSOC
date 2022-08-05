@@ -208,6 +208,13 @@ ArchLunix / Manjaro Llinux X11 Forwarding
     X11DisplayOffset 10
 
 
+For Issues where GUI applications work as user(sanjayr) but not as root (or sudo) - for Eg.  >> sudo gparted
+    - Log in as root (sudo su)
+    - export XAUTHORITY=/home/username/.Xauthority
+        * THis could be added to  root (su)   .bashrc file to permanently allow root to connect to a non-root user's X server.
+
+
+
 How to Get a WiFI USB Dongle to work on the ZU104 card:
 
  A. Enable  Kernel drivers for the USB WiFi chipset (in this case RaLink - RA28xx
