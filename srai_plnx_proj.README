@@ -112,6 +112,7 @@ Login as root (root)
 
  Update and upgarde repository (pacman --noconfirm -Syu <package>  to skip confirming). Use the attached  ArchLinux_pacman_install_packages  script )
     >pacman -Syyu 
+    >pacman -Syu sudo 
     >pacman -Syu python 
     >pacman -Syu xorg
     >pacman -Syu xorg-server
