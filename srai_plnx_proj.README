@@ -23,6 +23,35 @@ Point to the directory where the .hdf file is located. THis file would have been
          Configure rootfs to be in the SD partiton 
             Image Packaging Configuration -> Root filesystem type ---> SD card (default would be INITRAMFS)
 
+
+
+**** NOTE of OSPREO - Ethernet FMC card for  PL Ethernet controller.
+    1. PL Ethernet with OSPREO  FMC card needs a  Tri-Mode  Ethernet  License from Xilinx  .
+
+    2. Use the following  in the  ./petalinux_proj/project-spec/meta-user/recipes-bsp/device-tree/files/system-user.dtsi  :
+
+                                /include/ "system-conf.dtsi"
+                                / {
+                                };
+                                
+                                &axi_ethernet_2 {  
+                                    local-mac-address = [00 0a 35 00 01 23];  
+                                    phy-handle = <&extphy2>;  
+                                    xlnx,has-mdio = <0x1>;  
+                                    phy-mode = "rgmii-rxid";  
+                                    mdio {  
+                                        #address-cells = <1>;  
+                                        #size-cells = <0>;  
+                                        extphy2: phy@0 {  
+                                            device_type = "ethernet-phy";  
+                                            reg = <0>;  
+                                        };  
+                                    };  
+                                };  
+                                  
+
+
+
 > petalinux-build
 
 > petalinux-package --boot --format BIN --fsbl ./images/linux/zynqmp_fsbl.elf  --fpga ./images/linux/system.bit  --u-boot
