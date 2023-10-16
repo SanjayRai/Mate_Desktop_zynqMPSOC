@@ -49,6 +49,35 @@ Point to the directory where the .hdf file is located. THis file would have been
                                     };  
                                 };  
                                   
+    3.  More  and better  description for OSPREO Ethernet FMS : 
+                https://ethernetfmc.com/
+                https://axieth.ethernetfmc.com/en/latest/
+                https://opsero.com/product/ethernet-fmc-1v8/
+
+    4.  For  Phy timing explanations :
+                https://ethernetfmc.com/docs/user-guide/rgmii-timing/#stage-3-phy
+
+                        Both internal delays DISABLED: phy-mode = "rgmii";
+                        Both internal delays ENABLED: phy-mode = "rgmii-id";
+                        Only RX internal delay ENABLED: phy-mode = "rgmii-rxid";
+                        Only TX internal delay ENABLED: phy-mode = "rgmii-txid";
+
+                        &axi_ethernet_0 {  
+                            local-mac-address = [00 0a 35 00 01 22];  
+                            phy-handle = <&phy0>;  
+                            xlnx,has-mdio = <0x1>;  
+                            phy-mode = "rgmii";  
+                            mdio {  
+                                #address-cells = <1>;  
+                                #size-cells = <0>;  
+                                phy0: phy@0 {  
+                                    compatible = "marvell,88e1510";  
+                                    device_type = "ethernet-phy";  
+                                    reg = <0>;  
+                                };  
+                            };  
+                        };
+
 
 
 
