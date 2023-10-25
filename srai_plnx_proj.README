@@ -158,7 +158,9 @@ Login as root (root)
     >pacman -Syu chromium  
     >pacman -Syu libreoffice  
     >pacman -Syyu gparted
-      >pacman -Syyu usbutils
+    >pacman -Syyu usbutils
+    >pacman -Syyu sysstat
+    >pacman -Syyu htop 
     >pacman -S ttf-dejavu ttf-liberation noto-fonts
     >ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf  /etc/fonts/conf.d
     >ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf  /etc/fonts/conf.d
