@@ -12,3 +12,8 @@ The goal is to install ArchLinux with Mate Desktop on ZynQ MPSoc starting with V
 5. Download BOOT.BIN and image.ub to  Partition 1 (Boot partition) of the SD Card
 6. Copy the Latech ArchLinux rootfs to partiton2 (EXT4)
 7. use pacman Package manager to install various tools including vncserver.
+
+
+
+There is also : https://ubuntu.com/download/amd
+THis  provides the latest Ubuntu for  all the  popular AMD_Xilinx MPSoC dev cards.
